@@ -2,9 +2,6 @@
   "name": "changelog-gen-js",
   "version": "0.0.0",
   "description": "Automates CHANGELOG generation and release tagging",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LachlanMarnham/changelog-gen-js.git"
