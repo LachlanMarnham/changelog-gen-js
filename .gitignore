@@ -4,9 +4,9 @@
 # Mac/OSX
 .DS_Store
 
-# Frontend
 node_modules/
 .cache/
 dist/
 coverage/
 .nvmrc
+src/scratch
