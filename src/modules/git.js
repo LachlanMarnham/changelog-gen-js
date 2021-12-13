@@ -1,7 +1,7 @@
 'use strict';
 
 function foo() {
-    return 'Hello World!';
+    return 'Hello World!!';
 }
 
 export { foo };
