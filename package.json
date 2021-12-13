@@ -2,6 +2,7 @@
   "name": "changelog-gen-js",
   "version": "0.0.0",
   "description": "Automates CHANGELOG generation and release tagging",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LachlanMarnham/changelog-gen-js.git"
