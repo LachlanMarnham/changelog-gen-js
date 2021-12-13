@@ -1,5 +1,5 @@
 {
-  "name": "changelog-gen-js",
+  "name": "@lachlan.marnham/changelog-gen",
   "version": "0.0.0",
   "description": "Automates CHANGELOG generation and release tagging",
   "type": "module",
