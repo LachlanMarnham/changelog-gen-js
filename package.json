@@ -12,5 +12,8 @@
   "bugs": {
     "url": "https://github.com/LachlanMarnham/changelog-gen-js/issues"
   },
-  "homepage": "https://github.com/LachlanMarnham/changelog-gen-js#readme"
+  "homepage": "https://github.com/LachlanMarnham/changelog-gen-js#readme",
+  "dependencies": {
+    "isomorphic-git": "^1.10.2"
+  }
 }
