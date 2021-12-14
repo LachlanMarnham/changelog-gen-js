@@ -22,7 +22,7 @@ async function setWorkingDirectoryToGitRoot() {
 
 async function getFilesOnDisk() {
     // Gets the Set of all files which aren't ignored (ie by the .gitignore).
-    // This does not include files which have been deleted
+    // This does not include files which have been deleted.
     let visibleFilesMatch =  './**';
     let hiddenFilesMatch = './**/.*';
     let filesList = await globby([visibleFilesMatch, hiddenFilesMatch], { gitignore: true });
