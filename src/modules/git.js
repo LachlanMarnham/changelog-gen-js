@@ -20,29 +20,29 @@ async function setWorkingDirectoryToGitRoot() {
     process.chdir(gitRoot);
 }
 
-// TODO delete?
-// async function getGitFiles() {
-//     // Gets the list of all files which aren't ignored (ie by the .gitignore).
-//     // This includes staged or unstaged, new files and deleted files.
-//     let visibleFilesMatch =  './**';
-//     let hiddenFilesMatch = './**/.*';
-//     return globby([visibleFilesMatch, hiddenFilesMatch], { gitignore: true });
-// }
+async function getFilesOnDisk() {
+    // Gets the list of all files which aren't ignored (ie by the .gitignore).
+    // This does not include files which have been deleted
+    let visibleFilesMatch =  './**';
+    let hiddenFilesMatch = './**/.*';
+    return globby([visibleFilesMatch, hiddenFilesMatch], { gitignore: true });
+}
 
 async function getGitFiles() {
     // Gets the list of all files which aren't ignored (ie by the .gitignore).
-    // This includes staged or unstaged, new files and deleted files.
+    // This includes staged or unstaged, new files and deleted files. It does not include
+    // files which are both new and unstaged
     return git.listFiles({ fs, dir: '.' });
 }
 
 async function isClean() {
-    const paths = await getGitFiles();
+    const paths = await getFilesOnDisk();
     for (const filepath of paths) {
         let status = await gitStatus(filepath);
         if (status !== 'unmodified') {
-            console.log(filepath, ' modified');
+            console.log(filepath, status);
         };
     }
-} //
+}
 
 export { gitStatus, isClean, setWorkingDirectoryToGitRoot };
