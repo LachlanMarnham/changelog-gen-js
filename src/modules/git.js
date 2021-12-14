@@ -15,6 +15,8 @@ async function getGitRoot() {
 }
 
 async function setWorkingDirectoryToGitRoot() {
+    // Changes the process working directory to the git root (ie the directory containing .git).
+    // This ensures that git commands return results for the entire repo, regardless of calling context.
     const gitRoot = await getGitRoot();
     process.chdir(gitRoot);
 }
