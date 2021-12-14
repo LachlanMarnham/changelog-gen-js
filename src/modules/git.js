@@ -14,9 +14,16 @@ async function getGitFiles() {
     return globby(['./**', './**/.*'], { gitignore: true });
 }
 
+async function getGitRoot() {
+    // Finds the project root by identifying the parent directory of .git
+    return git.findRoot({fs, filepath: process.cwd()})
+}
+
 async function isClean() {
     const paths = await getGitFiles();
     console.log(paths);
+    const gitRoot = await getGitRoot();
+    console.log(gitRoot);
     // for (const filepath of paths) {
     //     await git.add({ fs, dir, filepath });
     // }
