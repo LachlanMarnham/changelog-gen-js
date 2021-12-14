@@ -7,4 +7,4 @@ async function main() {
     await isClean();
 }
 
-await main();
+await main(); //

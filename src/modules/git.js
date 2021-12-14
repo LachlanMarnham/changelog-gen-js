@@ -43,6 +43,6 @@ async function isClean() {
             console.log(filepath, ' modified');
         };
     }
-}
+} //
 
 export { gitStatus, isClean, setWorkingDirectoryToGitRoot };
