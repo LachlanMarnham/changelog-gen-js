@@ -14,6 +14,7 @@
   },
   "homepage": "https://github.com/LachlanMarnham/changelog-gen-js#readme",
   "dependencies": {
+    "globby": "^12.0.2",
     "isomorphic-git": "^1.10.2"
   }
 }
