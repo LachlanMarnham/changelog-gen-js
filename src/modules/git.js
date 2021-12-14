@@ -5,9 +5,7 @@ import {globby} from 'globby';
 import path from 'path';
 
 async function gitStatus(filepath) {
-    let status = await git.status({ fs, dir: '.', filepath: filepath });
-    /// if status !== 'unmodified';
-    console.log(status, filepath);
+    return git.status({ fs, dir: '.', filepath: filepath });
 }
 
 async function getGitRoot() {
@@ -22,18 +20,28 @@ async function setWorkingDirectoryToGitRoot() {
     process.chdir(gitRoot);
 }
 
+// TODO delete?
+// async function getGitFiles() {
+//     // Gets the list of all files which aren't ignored (ie by the .gitignore).
+//     // This includes staged or unstaged, new files and deleted files.
+//     let visibleFilesMatch =  './**';
+//     let hiddenFilesMatch = './**/.*';
+//     return globby([visibleFilesMatch, hiddenFilesMatch], { gitignore: true });
+// }
+
 async function getGitFiles() {
     // Gets the list of all files which aren't ignored (ie by the .gitignore).
     // This includes staged or unstaged, new files and deleted files.
-    let visibleFilesMatch =  './**';
-    let hiddenFilesMatch = './**/.*';
-    return globby([visibleFilesMatch, hiddenFilesMatch], { gitignore: true });
+    return git.listFiles({ fs, dir: '.' });
 }
 
 async function isClean() {
     const paths = await getGitFiles();
     for (const filepath of paths) {
-        await gitStatus(filepath);
+        let status = await gitStatus(filepath);
+        if (status !== 'unmodified') {
+            console.log(filepath, ' modified');
+        };
     }
 }
 
