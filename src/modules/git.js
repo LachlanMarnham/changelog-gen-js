@@ -22,9 +22,8 @@ async function setWorkingDirectoryToGitRoot() {
 async function getGitFiles() {
     // Gets the list of all files which aren't ignored (ie by the .gitignore).
     // This includes staged or unstaged, new files and deleted files.
-    const gitRoot = await getGitRoot();
-    var visibleFilesMatch = path.join(gitRoot, './**');
-    var hiddenFilesMatch = path.join(gitRoot, './**/.*');
+    let visibleFilesMatch =  './**';
+    let hiddenFilesMatch = './**/.*';
     return globby([visibleFilesMatch, hiddenFilesMatch], { gitignore: true });
 }
 
@@ -36,4 +35,4 @@ async function isClean() {
     // }
 }
 
-export { gitStatus, isClean };
+export { gitStatus, isClean, setWorkingDirectoryToGitRoot };

@@ -1,5 +1,13 @@
 'use strict';
 
-import { gitStatus, isClean } from './modules/git.js';
+import { isClean, setWorkingDirectoryToGitRoot } from './modules/git.js';
 
-var bar = await isClean();
+async function main() {
+    console.log('Start directory: ' + process.cwd());
+    await setWorkingDirectoryToGitRoot();
+    console.log('New directory: ' + process.cwd());
+    var bar = await isClean();
+    console.log('End directory: ' + process.cwd());
+}
+
+await main();
