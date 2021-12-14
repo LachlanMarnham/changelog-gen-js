@@ -9,7 +9,7 @@ async function main(){
 
     // get the files git knows about
     let files = await git.listFiles({ fs, dir: '.' });
-
+    console.log(files);
     // print 'working tree not clean' if there are any files which don't have 
     // the status: 'unmodified'
     for (const filepath of files) {
