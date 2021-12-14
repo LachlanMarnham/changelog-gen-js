@@ -1,6 +1,5 @@
 'use strict';
 
-import { foo } from './modules/git.js';
+import { gitStatus, isClean } from './modules/git.js';
 
-var bar = foo();
-console.log(bar);
+var bar = await isClean();
