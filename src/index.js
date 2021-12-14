@@ -6,7 +6,7 @@ async function main() {
     console.log('Start directory: ' + process.cwd());
     await setWorkingDirectoryToGitRoot();
     console.log('New directory: ' + process.cwd());
-    var bar = await isClean();
+    await isClean();
     console.log('End directory: ' + process.cwd());
 }
 

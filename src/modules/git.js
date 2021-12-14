@@ -4,9 +4,10 @@ import fs from 'fs';
 import {globby} from 'globby';
 import path from 'path';
 
-async function gitStatus() {
-    let status = await git.status({ fs, dir: '.', filepath: 'README.md' });
-    console.log(status);
+async function gitStatus(filepath) {
+    let status = await git.status({ fs, dir: '.', filepath: filepath });
+    /// if status !== 'unmodified';
+    console.log(status, filepath);
 }
 
 async function getGitRoot() {
@@ -31,10 +32,9 @@ async function getGitFiles() {
 
 async function isClean() {
     const paths = await getGitFiles();
-    console.log(paths);
-    // for (const filepath of paths) {
-    //     await git.add({ fs, dir, filepath });
-    // }
+    for (const filepath of paths) {
+        await gitStatus(filepath);
+    }
 }
 
 export { gitStatus, isClean, setWorkingDirectoryToGitRoot };
